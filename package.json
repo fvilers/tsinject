@@ -27,6 +27,9 @@
     "url": "https://github.com/fvilers/tsinject/issues"
   },
   "homepage": "https://github.com/fvilers/tsinject#readme",
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  },
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
     "@types/jest": "^29.2.4",
