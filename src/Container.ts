@@ -13,21 +13,24 @@ export class Container {
   }
 
   resolve<T>(target: Constructor<T>): T {
-    const lifetime = Reflect.getMetadata(
-      LIFETIME_METADATA_KEY,
-      target
-    ) as Lifetime;
+    const lifetime = this.getLifetime(target);
 
     if (lifetime === "scoped") {
-      return this.resolveFromRegistry(target, this.registry);
+      return this.resolveFromRegistry(target, this.registry) as T;
     }
 
     if (lifetime === "singleton") {
-      return this.resolveFromRegistry(target, Container.globalRegistry);
+      return this.resolveFromRegistry(target, Container.globalRegistry) as T;
     }
 
     // Resolve as transient for undefined lifetime
     return this.resolveTransient(target);
+  }
+
+  private getLifetime(target: Constructor): Lifetime {
+    const lifetime = Reflect.getMetadata(LIFETIME_METADATA_KEY, target);
+
+    return lifetime;
   }
 
   private resolveTransient<T>(target: Constructor<T>): T {
@@ -37,10 +40,10 @@ export class Container {
     return new target(...args);
   }
 
-  private resolveFromRegistry<T>(
-    target: Constructor<T>,
+  private resolveFromRegistry(
+    target: Constructor,
     registry: Registry
-  ): T {
+  ): unknown {
     let instance = registry.get(target);
 
     if (instance === undefined) {
@@ -48,6 +51,6 @@ export class Container {
       registry.set(target, instance);
     }
 
-    return instance as T;
+    return instance;
   }
 }
