@@ -2,8 +2,12 @@
   "name": "tsinject",
   "version": "0.0.0",
   "description": "A dependency injection library providing an inversion of control container written in TypeScript",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
+    "prebuild": "rimraf ./dist",
+    "build": "tsc",
+    "start": "node ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +26,11 @@
   "bugs": {
     "url": "https://github.com/fvilers/tsinject/issues"
   },
-  "homepage": "https://github.com/fvilers/tsinject#readme"
+  "homepage": "https://github.com/fvilers/tsinject#readme",
+  "devDependencies": {
+    "@tsconfig/node18": "^1.0.1",
+    "@types/node": "^18.11.18",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.4"
+  }
 }
