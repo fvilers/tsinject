@@ -1,0 +1,26 @@
+{
+  "name": "tsinject",
+  "version": "0.0.0",
+  "description": "A dependency injection library providing an inversion of control container written in TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fvilers/tsinject.git"
+  },
+  "keywords": [
+    "library",
+    "typescript",
+    "dependency-injection",
+    "typescript-library",
+    "inversion-of-control"
+  ],
+  "author": "Fabian Vilers <fabian.vilers@dev-one.com> (https://www.dev-one.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fvilers/tsinject/issues"
+  },
+  "homepage": "https://github.com/fvilers/tsinject#readme"
+}
